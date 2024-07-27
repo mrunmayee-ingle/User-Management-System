@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+    <link rel="stylesheet" type="text/css" href="../task4/style.css">
+    <style>
+        .container {
+            background-color: #e5dede;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            max-width: 40%;
+            /* width: 100%; */
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #4a4848;
+            margin-bottom: 20px;
+        }
+
+        
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .details .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .details .detail-item label {
+            font-weight: bold;
+            color: #4a4848;
+            width: 30%;
+            margin: 0;
+        }
+
+        .details .detail-item span {
+            width: 70%;
+            text-align: left;
+            color: #4a4848;
+            margin: 0;
+        }
+
+
+        .btn {
+            display: inline-block;
+            background-color: #363637;
+            color: #e0dbdb;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #5f6163;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Details </h2>
+        <div class="details">
+            <div class="detail-item">
+                <label>First Name : </label>
+                <span><?= $fname; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Last Name : </label>
+                <span><?= $lname; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Date of Birth : </label>
+                <span><?= $dob; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Email : </label>
+                <span><?= $email; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>PAN Number : </label>
+                <span><?= $pan; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>GST Number : </label>
+                <span><?= $gst; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Aadhar Number : </label>
+                <span><?= $aadhar; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Company Name : </label>
+                <span><?= $cname; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Gender : </label>
+                <span><?= $gender; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Mobile Number : </label>
+                <span><?= $mobile; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Address 1 : </label>
+                <span><?= $address1; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Address 2 : </label>
+                <span><?= $address2; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Address 3 : </label>
+                <span><?= $address3; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Country : </label>
+                <span><?= $country; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>State : </label>
+                <span><?= $state; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>City : </label>
+                <span><?= $city; ?></span>
+            </div>
+            <div class="detail-item">
+                <label>Pincode : </label>
+                <span><?= $pincode; ?></span>
+            </div>
+        </div>
+        <a href="view.php" class="btn">Back to View</a>
+        <form action="edit.php" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="<?= $id; ?>">
+            <input type="hidden" name="action" value="approve">
+            <button type="submit" class="btn">Approve</button>
+        </form>
+        <form action="edit.php" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="<?= $id; ?>">
+            <input type="hidden" name="action" value="reject">
+            <button type="submit" class="btn">Reject</button>
+        </form>
+    </div>
+</body>
+</html>
+

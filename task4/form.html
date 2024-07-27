@@ -1,0 +1,110 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>Personal Information Form</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#otherLanguage').hide();
+            $('#addLanguageButton').click(function(){
+                $('#otherLanguage').toggle();
+            });
+        });
+
+        function fetchCities(state) {
+            $.ajax({
+                url: "get_cities.php",
+                type: "POST",
+                data: { state: state },
+                success: function(response) {
+                    $("#city").replaceWith('<select id="city" name="city">' + response + '</select>');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Registration Form</h2>
+
+        <form id="personalInfoForm" method="post" action="submit_form.php">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="required">
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" class="required">
+
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" class="required">
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" class="required">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" class="required">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="required">
+
+            <label for="pan">PAN Number:</label>
+            <input type="tel" id="pan" name="pan" class="required">
+
+            <label for="gst">GST Number:</label>
+            <input type="tel" id="gst" name="gst" class="required">
+
+            <label for="aadhar">Aadhar Number:</label>
+            <input type="tel" id="aadhar" name="aadhar" class="required">
+
+            <label for="cname">Company Name:</label>
+            <input type="text" id="cname" name="cname" class="required">
+
+            <label for="gender">Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="female" name="gender" value="Female" class="required">
+                <label for="female">Female</label>
+
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+
+                <input type="radio" id="other" name="gender" value="Other">
+                <label for="other">Other</label>
+            </div>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" class="required">
+     
+            <label for="address">Address 1:</label>
+            <textarea id="address1" name="address1" rows="2" cols="50" placeholder="Building/Flat No" class="required"></textarea>
+
+            <label for="address">Address 2:</label>
+            <textarea id="address2" name="address2" rows="2" cols="50" placeholder="Street/Area" class="required"></textarea>
+
+            <label for="address">Address 3:</label>
+            <textarea id="address3" name="address3" rows="2" cols="50" placeholder="Nearby Landmark"></textarea>
+
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" class="required">
+
+            <label for="state">State:</label>
+            <select id="state" name="state" onchange="fetchCities(this.value)" class="required">
+                <option value="">Select your state</option>
+                <?php echo $states; ?>
+            </select>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" class="required">
+
+            
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" class="required">         
+
+            <div class="btn-container">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
